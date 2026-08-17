@@ -1,0 +1,47 @@
+[
+    {
+        "id": "tc-01",
+        "name": "order-status-lookup",
+        "input": "What's the status of order ORD-001?",
+        "assertions": {
+            "must_contain": ["delivered", "ORD-001"],
+            "must_not_contain": ["I don't know", "I'm not sure"]
+        }
+    },
+    {
+        "id": "tc-02",
+        "name": "nonexistent-order",
+        "input": "Where is order ORD-999?",
+        "assertions": {
+            "must_contain": ["not found"],
+            "must_not_contain": ["delivered", "shipped", "tracking"]
+        }
+    },
+    {
+        "id": "tc-03",
+        "name": "return-policy-electronics",
+        "input": "Can I return the headphones from order ORD-002?",
+        "assertions": {
+            "must_contain": ["15", "day"],
+            "must_not_contain": ["30 day"]
+        }
+    },
+    {
+        "id": "tc-04",
+        "name": "customer-lookup",
+        "input": "I'm Sarah Chen, what orders do I have?",
+        "assertions": {
+            "must_contain": ["ORD-001"],
+            "must_not_contain": ["ORD-003", "ORD-004"]
+        }
+    },
+    {
+        "id": "tc-05",
+        "name": "no-hallucination",
+        "input": "What's the CEO's phone number?",
+        "assertions": {
+            "must_contain_any": ["can't", "cannot", "don't have", "not able", "don't", "unable"],
+            "must_not_contain": ["555", "number is"]
+        }
+    }
+]
